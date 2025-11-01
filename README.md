@@ -19,12 +19,41 @@ To Implement Diffie Hellman Key Exchange Algorithm
 5. Security: The difficulty of computing discrete logarithms ensures that the shared key remains secure even if public values are intercepted.
 
 ## Program:
-
-
-
+```
+#include <math.h> 
+#include <stdio.h>
+// Power function to return value of a ^ b mod P
+long long int power(long long int a, long long int b, long long int P)
+{
+if (b == 1) 
+return a;
+else
+return (((long long int)pow(a, b)) % P);
+}
+// Driver program 
+int main()
+{
+long long int P, G, x, a, y, b, ka, kb;
+printf("\n\nEnter the value of P: ");
+scanf("%lld",&P); 
+printf("The value of P: %lld\n", P);
+printf("Enter the value of G (Primitive root of P): "); 
+scanf("%lld",&G);
+printf("The value of G: %lld\n\n", G);
+printf("The private key a for Alice : %lld\n", a); 
+x = power(G, a, P);
+b = 3; 
+printf("The private key b for Bob : %lld\n\n", b); 
+y = power(G, b, P); 
+ka = power(y, a, P); 
+kb = power(x, b, P); 
+printf("Secret key for the Alice is : %lld\n", ka); 
+printf("Secret Key for the Bob is : %lld\n", kb);
+return 0;
+}
+```
 ## Output:
-
-
+<img width="965" height="722" alt="Screenshot 2025-11-01 085157" src="https://github.com/user-attachments/assets/9d0929e7-92a9-4999-bd25-aa7c0f9a1c6b" />
 
 ## Result:
   The program is executed successfully
